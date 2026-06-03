@@ -47,13 +47,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ usuario, senha })
             });
-            const result = await resp.json();
-            if (resp.ok) {
+
+            const text = await resp.text();
+            let result = null;
+            try {
+                result = JSON.parse(text);
+            } catch (parseError) {
+                console.warn('Resposta não JSON do servidor:', text);
+            }
+
+            if (resp.ok && result && result.aluno) {
                 msg.innerText = 'Login bem-sucedido. Bem-vindo: ' + (result.aluno.nome_completo || result.aluno.usuario_acesso);
                 msg.className = 'success';
                 showProfile(result.aluno);
             } else {
-                msg.innerText = result.erro || 'Falha no login.';
+                let errorMessage = 'Falha no login.';
+                if (result && result.erro) {
+                    errorMessage = result.erro;
+                } else if (text) {
+                    errorMessage = text;
+                }
+                msg.innerText = errorMessage;
                 msg.className = 'error';
             }
         } catch (err) {
