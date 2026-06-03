@@ -56,14 +56,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Limpa mensagens anteriores e envia o formulário
+        const BACKEND_URL = window.location.hostname.includes('localhost') ? 'http://localhost:3000' : 'https://seu-backend.onrender.com';
+
+    // Limpa mensagens anteriores e envia o formulário
         msg.innerText = 'Enviando dados...';
         msg.className = '';
 
         const formData = new FormData(formAluno);
 
         try {
-            const resp = await fetch('/cadastrar', {
+            const resp = await fetch(`${BACKEND_URL}/cadastrar`, {
                 method: 'POST',
                 body: formData
             });

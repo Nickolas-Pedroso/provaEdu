@@ -41,8 +41,10 @@ document.addEventListener('DOMContentLoaded', () => {
         msg.innerText = 'Verificando...';
         msg.className = '';
 
+        const BACKEND_URL = window.location.hostname.includes('localhost') ? 'http://localhost:3000' : 'https://seu-backend.onrender.com';
+
         try {
-            const resp = await fetch('/login', {
+            const resp = await fetch(`${BACKEND_URL}/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ usuario, senha })
