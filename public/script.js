@@ -56,9 +56,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        const BACKEND_URL = window.location.hostname.includes('localhost') ? 'http://localhost:3000' : 'https://seu-backend.onrender.com';
+        const BACKEND_URL = window.location.hostname.includes('localhost') ? 'http://localhost:3000' : 'https://provaeduback.onrender.com';
 
-    // Limpa mensagens anteriores e envia o formulário
+        // Limpa mensagens anteriores e envia o formulário
         msg.innerText = 'Enviando dados...';
         msg.className = '';
 

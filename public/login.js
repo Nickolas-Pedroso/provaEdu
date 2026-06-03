@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         msg.innerText = 'Verificando...';
         msg.className = '';
 
-        const BACKEND_URL = window.location.hostname.includes('localhost') ? 'http://localhost:3000' : 'https://seu-backend.onrender.com';
+        const BACKEND_URL = window.location.hostname.includes('localhost') ? 'http://localhost:3000' : 'https://provaeduback.onrender.com';
 
         try {
             const resp = await fetch(`${BACKEND_URL}/login`, {
