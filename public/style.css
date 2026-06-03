@@ -94,6 +94,33 @@ button:hover {
     border-radius: 4px;
 }
 
+.profile {
+    margin-top: 20px;
+}
+
+.profile-card {
+    text-align: center;
+}
+
+.profile-card img {
+    width: 100%;
+    max-width: 260px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+}
+
+.profile-card p {
+    margin-bottom: 12px;
+    color: #444;
+    font-size: 15px;
+}
+
+.hidden {
+    display: none;
+}
+
 .success {
     color: #155724;
     background-color: #d4edda;

@@ -85,4 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
             msg.className = 'error';
         }
     };
+
+    // (Login/listagem moved to separate page `login.html`)
 });
