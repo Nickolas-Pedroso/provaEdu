@@ -68,14 +68,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: formData
             });
 
-            const result = await resp.json();
+            const text = await resp.text();
+            let result = null;
+            try {
+                result = JSON.parse(text);
+            } catch (parseError) {
+                console.warn('Resposta não JSON do servidor:', text);
+            }
 
-            if (resp.ok) {
-                msg.innerText = result.mensagem;
+            if (resp.ok && result) {
+                msg.innerText = result.mensagem || 'Aluno cadastrado com sucesso!';
                 msg.className = 'success';
                 formAluno.reset();
             } else {
-                msg.innerText = result.erro || 'Erro ao cadastrar aluno.';
+                const errorMessage = (result && result.erro) ? result.erro : text || 'Erro ao cadastrar aluno.';
+                msg.innerText = errorMessage;
                 msg.className = 'error';
             }
 
